@@ -1,3 +1,6 @@
+import eventlet
+eventlet.monkey_patch()
+
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send
 
@@ -15,4 +18,4 @@ def handleMessage(msg):
     send(msg, broadcast=True)
 
 if __name__ == '__main__':
-    socketio.run(app, allow_unsafe_werkzeug=True, host='0.0.0.0', port=10000)
+    socketio.run(app)
